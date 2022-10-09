@@ -37,8 +37,8 @@ class BankAccount:
             print(account.display_account_info)
         return cls
 
-account_1 = BankAccount(3.25, 600)
-account_2 = BankAccount(2.0, 1750)
+account_1 = BankAccount(0.0325, 600)
+account_2 = BankAccount(0.02, 1750)
 
 account_1.deposit(1000).deposit(750).deposit(2500).withdraw(600).yield_interest().display_account_info()
 account_2.deposit(5000).deposit(150).withdraw(2000).withdraw(600).withdraw(400).withdraw(900).yield_interest().display_account_info()
