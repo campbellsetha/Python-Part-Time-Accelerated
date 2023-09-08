@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Report a Sasquatch Sighting!</title>
+</head>
+<body style="background-image: url('/static/img/background.jpeg');
+background-repeat:no-repeat;
+background-size: max max;">
+    <div class="container">
+        <div class="container">
+            <span class="header-nav" style="display: flex; align-items: center; justify-content: space-between;">
+                <h1> Sasquatch Websighting </h1>
+                <div class="nav">
+                    <h2>{{user.first_name}} {{user.last_name}}</h2>
+                    <a href="/home/{{user.id}}" class="nav-bttn">Sasquatch Sightings</a>
+                    <a href="/logout" class="nav-bttn">Logout</a>
+                </div>
+            </span>
+            {% with messages = get_flashed_messages(category_filter=['add']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p style="color:red; font-weight: 300;">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        <div class="main-add">
+            <form action="/add" method="POST">
+                <table id="add-table">
+                    <tr>
+                        <td style="text-align: left;"><label for="location">Location:</label></td>
+                        <td style="text-align: right;"><label for="date">Date of Sighting:</label></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;"><input type="text" name="location"></td>
+                        <td style="text-align: right;"><input type="date" name="date"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;"><label for="description">Description:</label></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;"><textarea name="description" id="description" cols="50" rows="8"></textarea></td>
+                        <td style="text-align: right;"><label for="amount""># of Sasquatches:</label><br> <br><input type="number" name="amount"></td>
+                    </tr>
+                </table>
+                <button>Report</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
